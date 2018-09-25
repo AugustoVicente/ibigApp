@@ -1,0 +1,16 @@
+page-editar-perfil {
+    .list_editar{
+        margin-top: 20px;
+        ion-item{
+            background-color: color($colors, light, base);
+        }
+        .topper{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .bottom{
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    }
+}

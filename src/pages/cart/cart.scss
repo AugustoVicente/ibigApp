@@ -1,0 +1,45 @@
+page-cart {
+    .resumo_pedido{
+        margin-left: 10%
+    }
+    .chip{
+        text-align: center;
+    }
+    .title_list{
+        background-color: color($colors, primary, base);   
+        border-radius: 10px;
+        color: color($colors, _white, base);
+        text-align: center;
+    }
+    .divisor{
+        border-bottom: 1px solid black; 
+    }
+    .title_page{
+        margin-left: 9%;
+        color: #1a0980;
+    }
+    .item_cart{
+        background-color: rgb(240, 243, 245);
+        border-radius: 10px;
+        border: 0.5px solid aquamarine;
+        .img_item{
+            display: block;
+            margin-left: 5%;
+            margin-right: auto;
+            .image_card{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                height: 90px;
+                width: auto;
+            }
+        }
+        .preco_item{
+            display: block;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+<ion-header ion-row>
+	<div col-4>
+		<ion-avatar class="image_profile">
+			<ion-badge color="_white" ion-fab mini item-end class="edit_image" (click)="editar_imagem()">
+				<ion-icon name="md-image" color="primary"></ion-icon>
+			</ion-badge>
+			<img [src]="dados_perfil().imagem" class="profile_image"/>
+		</ion-avatar>
+	</div>
+	<div col-8 ion-row class="info">
+		<h2 col-12 class="nome">{{dados_perfil().nome_fantasia}}</h2>	
+		<p col-9 class="email">{{dados_perfil().login}}</p>
+		<button class="log-out" col-2 mini ion-fab color="danger" (click)="deslogar()">
+			<ion-icon name="ios-log-out"></ion-icon>
+		</button>
+	</div>
+</ion-header>
+<ion-content padding>
+	<ion-fab top right>
+		<button ion-fab mini color="primary" (click)="editar()">
+			<ion-icon name="create"></ion-icon>
+		</button>
+	</ion-fab>
+	<ion-list>
+		<ion-item>
+			<ion-icon name="call" item-start></ion-icon>
+			<p>Telefone: {{dados_perfil().telefone}}</p>
+			<p>Celular: {{dados_perfil().celular}}</p>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="pin" item-start></ion-icon>
+			Endereço: {{dados_perfil().endereco}}, {{dados_perfil().cidade}} - {{dados_perfil().estado}}
+		</ion-item>
+		<ion-item>
+			<ion-icon name="briefcase" item-start></ion-icon>
+			<p>Razão social: {{dados_perfil().razao_social}}</p>
+			<p>CNPJ: {{dados_perfil().cnpj}}</p>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="calendar" item-start></ion-icon>
+			<p>Data de constituição: {{dados_perfil().data_constituicao}}</p>
+		</ion-item>
+		<ion-item>
+			<ion-icon name="md-person" item-start></ion-icon>
+			<p>Administrador: {{dados_perfil().administrador}}</p>
+		</ion-item>
+	</ion-list>
+</ion-content>

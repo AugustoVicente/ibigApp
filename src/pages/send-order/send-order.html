@@ -1,0 +1,47 @@
+<ion-header no-border>
+	<ion-navbar color="light">
+		<ion-title class="title_page" color="primary">
+			Enviar Pedido
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-list>
+		<div ion-row *ngFor="let produto of pedido.produtos" class="item_cart">
+			<div col-5>
+				<img [src]="produto.img" class="image_card"/>
+			</div>
+			<div col-7 class="preco_item">
+				<br/>
+				<div ion-row>
+					<b col-9>{{produto.nome}}</b><br/>
+					<ion-icon col-3 name="remove-circle" (click)="remove(produto.id);" color="danger"></ion-icon>
+				</div>
+				<small>{{produto.marca}}</small><br/>
+				Quantidade: {{produto.qtd}}
+				<p class="preco"><b>SubTotal: </b><small>{{utils.transforma_to_preco(produto.preco*produto.qtd)}}</small> {{utils.transforma_to_preco(produto.preco_fim*produto.qtd)}}</p>
+			</div>
+		</div>
+	</ion-list>
+	<ion-list>
+		<div class="chip">
+			<ion-chip>
+				<ion-icon name="cash" color="_green"></ion-icon>
+				<ion-label>Valor total: <b>{{preco_total()}}</b></ion-label>
+			</ion-chip>	
+			<ion-chip>
+				<ion-icon name="pricetag" color="_green"></ion-icon>
+				<ion-label>Big economia: <b>{{economia_total()}}</b></ion-label>
+			</ion-chip>	
+		</div>
+		<div ion-row>
+			<ion-item>
+				<ion-label>Pagamento</ion-label>
+				<ion-select [(ngModel)]="pagamento">
+					<ion-option *ngFor="let forma_pagamento of atualiza_forma_pagamento(); let i = index" [value]="forma_pagamento.value" [selected]="(i == 0)">{{forma_pagamento.nome}}</ion-option>
+				</ion-select>
+			</ion-item>
+		</div>
+	</ion-list>
+	<button (click)="envia_pedido()" [disabled]="qtd()" ion-button block round color="_green">Enviar Pedido</button>
+</ion-content>

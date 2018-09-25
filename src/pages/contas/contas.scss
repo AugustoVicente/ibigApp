@@ -1,0 +1,9 @@
+page-contas {
+    ion-segment{
+        background-color: color($colors, primary, base);
+    }
+    .title_chip{
+        width: 100%;
+        text-align: center;
+    }
+}

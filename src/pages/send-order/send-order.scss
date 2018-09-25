@@ -1,0 +1,25 @@
+page-send-order {
+    .item_cart{
+        border-radius: 10px;
+        border: 1px solid black;
+        .image_card{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            width: auto;
+            height: 100px;
+        }
+    }
+    .chip{
+        text-align: center;
+    }
+    .preco{
+        small{
+            text-decoration: line-through;
+        }
+    }
+    .title_page{
+        margin-left: 14%;
+        color: #1a0980;
+    }
+}

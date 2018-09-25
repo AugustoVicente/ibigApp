@@ -1,0 +1,44 @@
+<ion-content padding>
+	<ion-icon name="close-circle" (click)="close()"></ion-icon>
+	<ion-card class="card_shop">
+		<img [src]="server.get_product_image_url(produto.link_imagem)" class="img_add_cart"/>
+		<ion-card-content class="content_card_add">
+			<ion-card-title>
+				<b>{{produto.nome}}</b>
+			</ion-card-title>
+			<p>{{produto.descricao}}</p>
+			<p>Marca: {{produto.marca}}</p>
+		</ion-card-content>
+	</ion-card>
+	<div class="chip">
+		<ion-chip>
+			<ion-label>Preço Normal: <b>{{utils.transforma_to_preco(produto.preco)}}</b></ion-label>
+		</ion-chip>	
+		<ion-chip>
+			<ion-icon name="pricetag" color="_green"></ion-icon>
+			<ion-label>{{porcentagem}}% de desconto</ion-label>
+		</ion-chip>
+	</div>
+	<div ion-row>
+		<ion-col col-12>
+			<h2 class="preco">IBig Oportunidade: {{preco_produto(produto.preco, produto.desconto)}}</h2>
+		</ion-col>
+	</div>
+	<h2>Quantidade:</h2>
+	<div class="qtd_div" ion-row>
+		<div col-2></div>
+		<div col-2>
+			<ion-icon name="remove" class="icon_qtd" (click)="remove()"></ion-icon>
+		</div>
+		<div col-4>
+			<ion-input text-center type="number" min="1" [ngModel]="qtd"></ion-input>
+		</div>
+		<div col-1></div>
+		<div col-2>
+			<ion-icon name="add" class="icon_qtd" (click)="adiciona()"></ion-icon>
+		</div>
+		<div col-1></div>
+	</div>
+	<br/>
+	<button (click)="add_pedido()" ion-button block round color="_green">Salvar Pedido</button>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header no-border>
+	<ion-navbar color="light">
+		<ion-title class="title_page" color="primary">
+			Carrinho de compras
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-list>
+		<ion-list-header class="title_list">Pedidos do carrinho</ion-list-header>
+		<div ion-row class="item_cart" *ngFor="let pedido of lista_pedidos()" (click)="seleciona_pedido(pedido);">
+			<div col-5 class="img_item">
+				<img [src]="pedido.imagem" class="image_card"/>
+			</div>
+			<div col-6 class="preco_item">
+				<div ion-row>
+					<b col-9>{{pedido.marca}}</b><br/>
+					<ion-icon col-3 name="remove-circle" (click)="remove(pedido.id, $event);" color="danger"></ion-icon>
+				</div>
+				Quantidade de produtos: {{pedido.produtos.length}}<br/><br/>
+				<b>SubTotal: {{total_por_pedido(pedido)}}</b><br/>
+			</div>
+		</div>
+		<br/>
+		<ion-list-header class="title_list">Resumo do carrinho</ion-list-header>
+		<div class="chip">
+			<ion-chip>
+				<ion-icon name="ios-paper-outline" color="_green"></ion-icon>
+				<ion-label>Quantidade de pedidos: <b>{{pedidos.length}}</b></ion-label>
+			</ion-chip>	
+			<ion-chip>
+				<ion-icon name="cash" color="_green"></ion-icon>
+				<ion-label>Total: <b>{{utils.transforma_to_preco(total_pedidos)}}</b></ion-label>
+			</ion-chip>	
+		</div>
+	</ion-list>
+</ion-content>

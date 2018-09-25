@@ -1,0 +1,18 @@
+<ion-header>
+</ion-header>
+<ion-content padding>
+	<img src="assets/img/ibigLogo.png" class="login_logo">
+	<ion-list no-lines padding-top>
+		<ion-item no-lines class="forms">
+			<ion-input type="email" placeholder="E-mail" [(ngModel)]="login"></ion-input>
+		</ion-item>
+		<ion-item no-lines class="forms">
+			<ion-input type="password" placeholder="Senha" [(ngModel)]="senha"></ion-input>
+		</ion-item>
+	</ion-list>
+  	<button (click)="entrar();" ion-button block round color="primary">Entrar</button>
+	<div class="bottomOpt">
+		<button ion-button block color="dark" clear (click)="registrar();">Torne-se um BigParceiro</button>
+		<button ion-button block color="dark" clear (click)="recuperaSenha();">Esqueci a senha</button>
+	</div>
+</ion-content>

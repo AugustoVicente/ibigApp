@@ -1,0 +1,39 @@
+page-historic {
+    
+    .valor_pedido{
+        float: right;
+        text-align: right;
+    }
+    ion-list{
+        .title_list{
+            background-color: color($colors, primary, base);   
+            border-radius: 10px;
+            color: color($colors, _white, base);
+            text-align: center;
+        }
+        .title_list_verde{
+            background-color: color($colors, _green, base);   
+            border-radius: 10px;
+            color: color($colors, dark, base);
+            text-align: center;
+        }
+        .title_list_vermelho{
+            background-color: color($colors, danger, base);   
+            border-radius: 10px;
+            color: color($colors, _white, base);
+            text-align: center;
+        }
+        .title_chip{
+            width: 100%;
+            text-align: center;
+        }
+        .item_pedido{
+            border-radius: 10px;
+            background-color: color($colors, light, base);
+            text-align: center;
+            width: 100%;
+            border: 1px solid color($colors, secondary, base);
+        }
+    }
+}
+

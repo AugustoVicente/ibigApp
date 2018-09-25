@@ -1,0 +1,30 @@
+page-user-login{
+	ion-content{
+		background-image: url('../assets/img/bread-pattern.jpeg');
+		background-size: 100% auto;
+		ion-input{
+			input{
+				text-align: center;
+			}
+		}
+		.forms {
+			margin-left: 10px;
+			margin-right: 10px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-right: 16px !important;
+			width: 100%;
+			max-width: -webkit-fill-available;
+			background-color: rgba(255, 255, 255, 0.842) !important;
+		}
+		.bottomOpt{
+			background-color: color($colors, light, base);
+			margin-top: 5%;
+			border-radius: 25px;
+		}
+		.login_logo{
+			margin-top: 10%;
+			margin-bottom: 5%;
+		}	
+	}
+}

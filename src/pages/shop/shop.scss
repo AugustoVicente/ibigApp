@@ -1,0 +1,59 @@
+page-shop {
+    .card_shop{
+        border-radius: 10px;
+        .content{
+            background-color: #f2e372;
+            font-family: sans-serif;
+            .preco{
+                // text-align: right;
+                small{
+                    text-decoration: line-through;
+                }
+            }
+            .descricao{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2; /* number of lines to show */
+                line-height: 1;        /* fallback */
+                max-height: 2;       /* fallback */
+                height: 30px;
+            }
+            .nome{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1; /* number of lines to show */
+                line-height: 1.1;        /* fallback */
+                max-height: 2;       /* fallback */
+            }
+            .marca{
+                text-align: center;
+            }
+        }
+    }
+    .search_bar{
+        border-radius: 50px;
+    }
+    .column_cart{
+        margin-top: 3%;
+        margin-left: 5%;
+    }
+    .image_card{
+        width: 70%;
+        height: 70px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ion-fab{
+        .info_carro{
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            border-radius: 100%;
+        }
+    }
+}

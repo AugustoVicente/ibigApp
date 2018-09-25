@@ -1,0 +1,47 @@
+page-add-to-cart {
+    .chip{
+        text-align: center;
+        ion-chip{
+            b{
+                text-decoration: line-through;
+            }
+        }
+    }
+    .preco{
+        text-align: center;
+    }
+    ion-icon {
+        font-size: 200%;
+    }
+    .qtd_div{
+        border: 2px solid black;
+        border-radius: 10px;
+        ion-input[type="number"] 
+        {
+            font-size: 25px;
+        }
+        .icon_qtd{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30%;
+            margin-bottom: auto;
+        }
+    }
+    .card_shop{
+        border-radius: 10px;
+        .img_add_cart{
+            width: 60%;
+            height: 150px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .content_card_add{
+            text-align: center;
+            background-color: color($colors, light, base);
+            font-family: sans-serif;
+        }
+    }
+}
+

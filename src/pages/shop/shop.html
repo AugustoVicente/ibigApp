@@ -1,0 +1,45 @@
+<ion-header>
+	<div ion-row>
+		<ion-searchbar class="search_bar" [(ngModel)]="filtro" [showCancelButton]="true" placeholder="Pesquisar"></ion-searchbar>
+	</div>
+</ion-header>
+<ion-content padding>
+	<div ion-row>
+		<ion-chip>
+			<ion-icon name="cart" [color]="estado_mercado()[1].cor_aberto"></ion-icon>
+			<ion-label><b>{{estado_mercado()[0].msg_pregao}}</b></ion-label>
+		</ion-chip>
+	</div>
+	<ion-refresher (ionRefresh)="refresh($event)">
+    	<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+	<div ion-row>
+		<h2 *ngIf="!produtos || produtos.length == 0">O mercado está fechado neste momento</h2>
+		<ng-container *ngFor="let produto of produtos">
+			<ion-col col-md-3 col-6 col-lg-2 *ngIf="filtrar(produto) == true">
+				<ion-card class="card_shop" (click)="escolhe_produto(produto)">
+					<img [src]="server.get_product_image_url(produto.link_imagem)" class="image_card"/>
+					<ion-card-content class="content">
+						<b class="nome">{{produto.nome}}</b>
+						<p class="marca"><small><b>{{produto.marca}}</b></small></p> 
+						<p class="preco"><small>{{utils.transforma_to_preco(produto.preco)}}</small></p>
+						<div ion-row>
+							<ion-col col-2>
+								<ion-icon name="pricetag"></ion-icon>
+							</ion-col>
+							<ion-col col-10>
+								<p class="preco">{{preco_produto(produto.preco, produto.desconto)}}</p>
+							</ion-col>
+						</div>
+					</ion-card-content>
+				</ion-card>	
+			</ion-col>
+		</ng-container>
+	</div>
+	<ion-fab right bottom>
+		<button ion-fab color="danger" [disabled]="lock_carrinho()" (click)="enter_cart()">
+			<ion-icon name="ios-basket-outline"></ion-icon>
+		</button>
+		<ion-badge item-end class="info_carro">{{qtd_itens_carrinho()}}</ion-badge>
+	</ion-fab>
+</ion-content>

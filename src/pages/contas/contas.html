@@ -1,0 +1,66 @@
+<ion-header>
+	<ion-segment [(ngModel)]="pagina" color="_white">
+		<ion-segment-button value="0">
+			Faturas Geradas
+		</ion-segment-button>
+		<ion-segment-button value="1">
+			Período atual
+		</ion-segment-button>
+	</ion-segment>
+</ion-header>
+<ion-content padding>
+	<div [ngSwitch]="pagina">
+		<div *ngSwitchCase="'0'">
+			<ion-chip item-content class="title_chip">
+				<ion-label>Faturas Pendentes</ion-label>
+				<ion-icon name="ios-alert-outline" color="danger"></ion-icon>
+			</ion-chip>
+			<br/>
+			<h1>Em breve..</h1>
+			<!-- <ng-container *ngFor="let pedido of pedidos">
+				<div *ngIf="pedido.status == 0" class="item_pedido">
+					<br/>
+					<ion-chip item-content>
+						<ion-icon name="md-calendar" color="_green"></ion-icon>
+						<ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+					</ion-chip>
+					<ion-chip item-content>
+						<ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+					</ion-chip>
+					<ion-chip item-content>
+						<ion-icon name="md-information" color="primary" (click)="information(pedido, 0)"></ion-icon>
+					</ion-chip>
+					<br/>
+					<br/>
+				</div>
+			</ng-container> -->
+			<br/>
+			<ion-chip item-content class="title_chip">
+				<ion-icon name="md-checkmark-circle-outline" color="_green"></ion-icon>
+				<ion-label>Faturas Pagas</ion-label>
+			</ion-chip>
+			<br/>
+			<h1>Em breve..</h1>
+			<!-- <ng-container *ngFor="let pedido of pedidos">
+				<div *ngIf="pedido.status == 0" class="item_pedido">
+					<br/>
+					<ion-chip item-content>
+						<ion-icon name="md-calendar" color="_green"></ion-icon>
+						<ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+					</ion-chip>
+					<ion-chip item-content>
+						<ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+					</ion-chip>
+					<ion-chip item-content>
+						<ion-icon name="md-information" color="primary" (click)="information(pedido, 0)"></ion-icon>
+					</ion-chip>
+					<br/>
+					<br/>
+				</div>
+			</ng-container> -->
+		</div>
+		<div *ngSwitchCase="'1'">
+			<h1>Em breve..</h1>
+		</div>
+	</div>
+</ion-content>

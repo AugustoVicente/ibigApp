@@ -1,0 +1,48 @@
+<ion-header no-border>
+	<ion-navbar>
+		<ion-buttons end *ngIf="showSkip">
+			<button ion-button (click)="startApp()" color="primary">Já conheço o IBigPro</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+<ion-content no-bounce>
+  	<ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+		<ion-slide>
+			<img src="assets/img/ibigLogo.png" class="slide-image"/>
+			<h2 class="slide-title">
+				Bem vindo ao <b>IBigPro</b>
+			</h2>
+			<p>
+				O <b>IBigPro</b> Seja bem vindo à Rede IBIG Pro. A partir de agora você é o mais novo 
+				integrante deste projeto que chegou para transformar de uma vez por todas a Indústria Artesanal 
+				de Panificação.
+			</p>
+		</ion-slide>
+		<ion-slide>
+			<img src="assets/img/ica-slidebox-img-2.png" class="slide-image"/>
+			<h2 class="slide-title">O que é o IBigPro?</h2>
+			<p>
+				O <b>IBigPro</b> surgiu com o objetivo de reduzir espaço que hoje existe entre os pequenos empresários 
+				do ramo da Panificação e a Indústria. O BIG Parceiro passa a ser grande, ganhando força de atacado. 
+				Contamos com um Aplicativo inovador de compra coletiva. A Rede atacará os pontos fracos e ameaças às 
+				empresas.
+			</p>
+		</ion-slide>
+		<ion-slide>
+			<img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
+			<h2 class="slide-title">Quais as vantagens de ser um BigParceiro?</h2>
+			<p>
+				Compra direto da Indústria, negociação coletiva com as credenciadoras de cartão, formação Administrativa 
+				e Técnica para os Big Parceiros.
+			</p>
+		</ion-slide>
+		<ion-slide>
+			<img src="assets/img/ica-slidebox-img-3.png" class="slide-image"/>
+			<h2 class="slide-title">Pronto pra se juntar a rede?</h2>
+			<button ion-button icon-end large clear (click)="startApp()">
+				Continuar
+				<ion-icon name="arrow-forward"></ion-icon>
+			</button>
+		</ion-slide>
+  	</ion-slides>
+</ion-content>

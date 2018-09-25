@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar class="navbarTransp">
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+	<img src="assets/img/forgotpwd.png" class="login_logo">
+	<ion-list no-lines padding-top>
+		<ion-item no-lines class="forms">
+			<ion-input type="email" placeholder="E-mail" [(ngModel)]="email"></ion-input>
+		</ion-item>
+	</ion-list>
+	<button ion-button block round color="primary" (click)="recupera();">Enviar Recuperação</button>
+	<h2 text-justify class="navbarTransp">As informações para recuperação de senha serão enviadas para o email cadastrado.</h2>
+</ion-content>

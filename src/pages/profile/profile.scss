@@ -1,0 +1,55 @@
+page-profile {
+    ion-list{
+        ion-item{
+            color: color($colors, light, base);      
+        }
+    }
+    ion-header{
+        background-color: color($colors, light, base);
+        .image_profile{
+            margin-left: 10%;
+            margin-top: 5%;
+            .profile_image{
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+            }
+            .edit_image{
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                top: 1px;
+                left: 70px;
+                border-radius: 100%;
+            }
+        }
+        .info{
+            margin-top: -3%;
+            .nome{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1; /* number of lines to show */
+                line-height: 1;        /* fallback */
+                max-height: 2;       /* fallback */
+                height: 30px;
+            }
+            .email{
+                margin-top: -1.5%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1; /* number of lines to show */
+                line-height: 1;        /* fallback */
+                max-height: 2;       /* fallback */
+                height: 20px;
+            }
+            .log-out{
+                margin-top: -5%;
+            }
+        }
+    }
+}
+

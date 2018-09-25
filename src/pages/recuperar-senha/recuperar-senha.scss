@@ -1,0 +1,19 @@
+page-recuperar-senha {
+    .toolbar-background{ background:transparent; border-style:none;}
+    .toolbar::after,.header-md::after{ background-image:none;}
+    ion-content{
+        background-color:color($colors,primary);
+        background-image:url('../assets/img/bread-pattern.jpeg');
+        background-size:100% auto;
+    }
+    .navbarTransp{
+        background: transparent;
+        background-color: rgba(240, 248, 255, 0.616)
+    }
+    .login_logo{
+        margin-bottom: 15%;
+        height: 30%;
+        width: auto;
+        margin-left: 25%;
+    }
+}

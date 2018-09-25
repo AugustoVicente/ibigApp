@@ -1,0 +1,168 @@
+<ion-content padding>
+    <ion-refresher (ionRefresh)="refresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list >
+        <ion-chip item-content class="title_chip" color="primary">
+            <ion-label>Pedidos Pendentes</ion-label>
+            <ion-icon name="md-arrow-forward"></ion-icon>
+        </ion-chip>
+        <br/>
+        <div ion-row>
+            <ng-container *ngFor="let pedido of pedidos" >
+                <div *ngIf="pedido.status == 0" class="item_pedido" col-sm-12 col-md-6 col-lg-3>
+                    <br/>
+                    <ion-chip item-content>
+                        <ion-icon name="md-calendar" color="_green"></ion-icon>
+                        <ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-icon name="md-information" color="primary" (click)="information(pedido, 0)"></ion-icon>
+                    </ion-chip>
+                    <br/>
+                    <br/>
+                </div>
+            </ng-container>
+        </div>
+        <br/>
+        <ion-chip item-content class="title_chip" color="primary">
+            <ion-label>Pedidos Recusados</ion-label>
+            <ion-icon name="ios-alert-outline" color="danger"></ion-icon>
+        </ion-chip>
+        <br/>
+        <div ion-row>
+            <ng-container *ngFor="let pedido of pedidos">
+                <div *ngIf="pedido.status == 2" class="item_pedido" col-sm-12 col-md-6 col-lg-3>
+                    <br/>
+                    <ion-chip item-content>
+                        <ion-icon name="md-calendar" color="_green"></ion-icon>
+                        <ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-icon name="md-information" color="primary" (click)="information_recusa(pedido)"></ion-icon>
+                    </ion-chip>
+                    <br/>
+                    <br/>
+                </div>
+            </ng-container>
+        </div>
+        <br/>
+        <ion-chip item-content color="primary" class="title_chip">
+            <ion-icon name="md-checkbox-outline" color="_green"></ion-icon>
+            <ion-label>Pedidos Aprovados</ion-label>
+        </ion-chip>
+        <br/>
+        <div ion-row>
+            <ng-container *ngFor="let pedido of pedidos">
+                <div *ngIf="pedido.status == 1" class="item_pedido" col-sm-12 col-md-6 col-lg-3>
+                    <br/>
+                    <ion-chip item-content>
+                        <ion-icon name="md-calendar" color="_green"></ion-icon>
+                        <ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-icon name="md-information" color="primary" (click)="information(pedido, 2)"></ion-icon>
+                        <ion-icon name="ios-card" color="primary" (click)="info_download(pedido.idCompra)"></ion-icon>
+                    </ion-chip>
+                    <br/>
+                    <br/>
+                </div>
+            </ng-container>
+        </div>
+        <br/>
+        <ion-chip item-content class="title_chip" color="primary">
+            <ion-icon name="logo-usd" color="_green"></ion-icon>
+            <ion-label>Pedidos Pagos</ion-label>
+        </ion-chip>
+        <br/>
+        <div ion-row>
+            <ng-container *ngFor="let pedido of pedidos">
+                <div *ngIf="pedido.status == 3 || 
+                    (pedido.status == 4 && (pedido.tipo_pagamento == 1 || pedido.tipo_pagamento == 2 || pedido.tipo_pagamento == 3)) || 
+                    (pedido.status == 5 && (pedido.tipo_pagamento == 2 || pedido.tipo_pagamento == 3)) || 
+                    (pedido.status == 6 && (pedido.tipo_pagamento == 3))" class="item_pedido" col-sm-12 col-md-6 col-lg-3>
+                    <br/>
+                    <ion-chip item-content>
+                        <ion-icon name="md-calendar" color="_green"></ion-icon>
+                        <ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-icon name="md-information" color="primary" (click)="information(pedido,3)"></ion-icon>
+                        <ion-icon name="ios-card" color="primary" (click)="info_download(pedido.idCompra)"></ion-icon>
+                    </ion-chip>
+                    <br/>
+                    <br/>
+                </div>
+            </ng-container>
+        </div>
+        <br/>
+        <ion-chip item-content class="title_chip" color="primary">
+            <ion-label>Pedidos Enviados</ion-label>
+            <ion-icon name="md-send" color="danger"></ion-icon>
+        </ion-chip>
+        <br/>
+        <div ion-row>
+            <ng-container *ngFor="let pedido of pedidos">
+                <div *ngIf="(pedido.status == 4 && pedido.tipo_pagamento == 0) || 
+                    (pedido.status == 5 && pedido.tipo_pagamento == 1) || 
+                    (pedido.status == 6 && pedido.tipo_pagamento == 2) || 
+                    (pedido.status == 7 && pedido.tipo_pagamento == 3)" class="item_pedido" col-sm-12 col-md-6 col-lg-3>
+                    <br/>
+                    <ion-chip item-content>
+                        <ion-icon name="md-calendar" color="_green"></ion-icon>
+                        <ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-icon name="md-information" color="primary" (click)="information(pedido,4)"></ion-icon>
+                    </ion-chip>
+                    <br/>
+                    <br/>
+                </div>
+            </ng-container>
+        </div>
+        <br/>
+        <ion-chip item-content class="title_chip" color="primary">
+            <ion-icon name="md-home" color="primary"></ion-icon>
+            <ion-label>Pedidos Recebidos</ion-label>
+            <ion-icon [name]="muda_icone_recebidos()" color="primary" (click)="set_recebidos()" *ngIf="qtd_recebidos()"></ion-icon>
+        </ion-chip>
+        <br/>
+        <div ion-row>
+            <ng-container *ngFor="let pedido of pedidos">
+                <div *ngIf="((pedido.status == 5 && pedido.tipo_pagamento == 0) || 
+                    (pedido.status == 6 && pedido.tipo_pagamento == 1) || 
+                    (pedido.status == 7 && pedido.tipo_pagamento == 2) || 
+                    (pedido.status == 8 && pedido.tipo_pagamento == 3)) && mostra_recebidos == true" class="item_pedido" col-sm-12 col-md-6 col-lg-3>
+                    <br/>
+                    <ion-chip item-content>
+                        <ion-icon name="md-calendar" color="_green"></ion-icon>
+                        <ion-label>{{utils.transforma_to_date(pedido.data)}}</ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-label>{{pedido.marca}} - <b>{{utils.transforma_to_preco(pedido.valor)}}</b></ion-label>
+                    </ion-chip>
+                    <ion-chip item-content>
+                        <ion-icon name="md-information" color="primary" (click)="information(pedido,5)"></ion-icon>
+                    </ion-chip>
+                    <br/>
+                    <br/>
+                </div>
+            </ng-container>
+        </div>
+    </ion-list>
+</ion-content>
