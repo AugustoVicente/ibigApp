@@ -247,15 +247,16 @@ export class RegisterPage
 					var url = "https://www.receitaws.com.br/v1/cnpj/"+cnpj;
 					this.http.get(url, { headers }).subscribe(data => 
 					{
-						this.razao_soc = data.atividade_principal.text;
-						this.nome_fantasia = data.fantasia;
-						this.estado = data.uf;
-						this.cidade = data.municipio;
-						this.endereco = data.logradouro +" "+ data.numero;
-						this.nome = data.nome;
-						this.tel = data.telefone;
-						this.email = data.email;
-						this.data_const = this.utils.transforma_to_date_contrario(data.abertura);
+						var dados : any = data;
+						this.razao_soc = dados.atividade_principal.text;
+						this.nome_fantasia = dados.fantasia;
+						this.estado = dados.uf;
+						this.cidade = dados.municipio;
+						this.endereco = dados.logradouro +" "+ dados.numero;
+						this.nome = dados.nome;
+						this.tel = dados.telefone;
+						this.email = dados.email;
+						this.data_const = this.utils.transforma_to_date_contrario(dados.abertura);
 						document.getElementById("dados_receita").style.display = "block";
 					}, err => 
 					{
