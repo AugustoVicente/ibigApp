@@ -58,7 +58,10 @@ export class Interface_usuario
 				{
 					// envia
 					text: title_confirm, // título do botão passado por parâmetro
-					handler:  confirm_action(context) // função de confirmação passada por parâmetro
+					handler:  ()=>
+					{
+						confirm_action(context) // função de confirmação passada por parâmetro
+					}
 				}
 			]
         });
@@ -80,12 +83,18 @@ export class Interface_usuario
 				{
 					// recusa
 					text: title_reject,  // título do botão passado por parâmetro
-					handler:  reject_action(context) // função de rejeição passada por parâmetro
+					handler:  ()=>
+					{
+						reject_action(context) // função de rejeição passada por parâmetro
+					}
 				},
 				{
 					// confirma
 					text: title_confirm, // título do botão passado por parâmetro
-					handler:  confirm_action(context) // função de confirmação passada por parâmetro
+					handler:  (context)=>
+					{
+						confirm_action(context) // função de confirmação passada por parâmetro
+					}
 				}
 			]
         });
