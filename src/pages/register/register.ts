@@ -231,24 +231,17 @@ export class RegisterPage
 			{
 				if(this.cnpj != this.cnpj_buscado)
 				{
-					let headers = new HttpHeaders(
-					{
-						'Content-Type' : 'application/json',
-						'Access-Control-Allow-Origin' : '*',
-						'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
-						'Accept' : 'application/json'
-					});
 					var cnpj = this.cnpj;
 					this.cnpj_buscado = cnpj;
 					cnpj = cnpj.replace(".", "");
 					cnpj = cnpj.replace(".", "");
 					cnpj = cnpj.replace("/", "");
 					cnpj = cnpj.replace("-", "");	
-					var url = "https://www.receitaws.com.br/v1/cnpj/"+cnpj;
-					this.http.get(url, { headers }).subscribe(data => 
+					// enviando solicitação de registro
+					this.user.buscar_cnpj(cnpj).then((resultado) => 
 					{
-						var dados : any = data;
-						this.razao_soc = dados.atividade_principal.text;
+						var dados : any = resultado;
+						this.razao_soc = dados.atividade_principal[0].text;
 						this.nome_fantasia = dados.fantasia;
 						this.estado = dados.uf;
 						this.cidade = dados.municipio;
@@ -257,24 +250,8 @@ export class RegisterPage
 						this.tel = dados.telefone;
 						this.email = dados.email;
 						this.data_const = this.utils.transforma_to_date_contrario(dados.abertura);
-						document.getElementById("dados_receita").style.display = "block";
-					}, err => 
-					{
-						if(err.status == "429")
-						{
-							var loading = this.interface_usuario.load_variavel("Esperando o servidor...");
-							loading.present();
-							setTimeout(function()
-							{
-								loading.dismiss();
-							}, 30000);					
-						}
-						else
-						{
-							this.interface_usuario.alerta_padrao("Erro", "CNPJ inválido!", ['Ok']);
-							document.getElementById("dados_receita").style.display = "none";
-						}
-					});
+						document.getElementById("dados_receita").style.display = "block";						
+					},(erro) => {});
 				}
 			}
 		}

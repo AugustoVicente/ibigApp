@@ -179,6 +179,7 @@ export class Usuario
 		});
 		return promise;
 	}
+	// solicita ao servidor para realizar uma operação de recuperar a senha
 	recuperar_senha(dados)
 	{
 		// criando função para lidar com resultado positivo
@@ -356,6 +357,44 @@ export class Usuario
 				resolve(sucesso);
 			}, erro =>
 			{
+				reject(false);
+			});
+		});
+		return promise;
+	}
+	buscar_cnpj(cnpj)
+	{
+		// criando array de dados a ser enviado como request ao webservice
+		var dados = [];
+		dados.push({id:"cnpj",valor:cnpj});
+		// criando função para lidar com resultado positivo
+		var function_resolve = (resolve, reject, resultado, context) =>
+		{
+			resolve(resultado);
+		};
+		// criando fução para lidar com resultado negativo
+		var function_reject = (reject, erro, context) =>
+		{
+			// alertando que não há conexão com a internet
+			context.interface_usuario.alerta_padrao("Sem conexão de internet","Erro: " + erro, ["ok"]);
+			reject(false);
+		};
+		// criando promise da função
+		let promise = new Promise(
+		(resolve, reject) => 
+		{
+			// criando load
+			var load = this.interface_usuario.load_variavel("Carregando.. (Esse processo pode levar alguns minutos)");
+			load.present();
+			// enviando request o servidor 
+			this.servidor.envia_request(dados, "busca_cnpj", function_resolve, function_reject, this)
+			.then(sucesso=>
+			{
+				load.dismiss();
+				resolve(sucesso);
+			}, erro =>
+			{
+				load.dismiss();
 				reject(false);
 			});
 		});
