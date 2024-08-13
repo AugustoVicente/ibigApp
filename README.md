@@ -17,3 +17,7 @@
 
 **IBIG Pro** connects small and medium-sized businesses with suppliers, making procurement easier and more profitable.
 
+## Usage
+
+- `npm i`
+- `npm run ionic:serve`
